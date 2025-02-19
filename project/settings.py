@@ -1,16 +1,19 @@
 import os
-from dotenv import load_dotenv
+from environs import Env
 
-load_dotenv("secret_set.env")
+
+env = Env()
+env.read_env("secret_set.env")
+
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ["ENGINE"],
-        'HOST': os.environ["HOST"],
-        'PORT': os.environ["PORT"],
-        'NAME': os.environ["NAME"],
-        'USER': os.environ["USER"],
-        'PASSWORD': os.environ["PASSWORD"],
+        'ENGINE': env.str("ENGINE"),
+        'HOST': env.str("HOST"),
+        'PORT': env.int("PORT"),
+        'NAME': env.str("NAME"),
+        'USER': env.str("USER"),
+        'PASSWORD': env.str("PASSWORD"),
     }
 }
 
@@ -18,7 +21,7 @@ INSTALLED_APPS = ['datacenter']
 
 SECRET_KEY = 'REPLACE_ME'
 
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
 ROOT_URLCONF = 'project.urls'
 
