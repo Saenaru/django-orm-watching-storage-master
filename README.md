@@ -1,23 +1,64 @@
 # Пульт охраны банка
 
-Это внутренний репозиторий для сотрудников банка «Сияние». Если вы попали в этот репозиторий случайно, 
-то вы не сможете его запустить, т.к. у вас нет доступа к БД, но можете свободно использовать код вёрстки
- или посмотреть как реализованы запросы к БД.
+Этот репозиторий предназначен для сотрудников банка «Сияние». Если вы случайно попали сюда, обратите внимание,
+ что без доступа к базе данных запустить проект не удастся. Вы можете изучить код вёрстки и то,
+ как устроены зап5росы к базе данных.
 
-Пульт охраны - это сайт, который можно подключить к удалённой базе данных с визитами и карточками пропуска
- сотрудников нашего банка.
+Пульт охраны — это веб-приложение, которое интегрируется с удалённой базой данных банка.
+ Оно предоставляет доступ к информации о визитах и пропускных карточках наших сотрудников,
+ облегчая мониторинг и управление безопасностью.
 
 ## Как установить
 
-
 ### 1. Python3 должен быть уже установлен. 
-### 2. Затем используйте `pip` (или `pip3`, есть конфликт с Python2) для установки зависимостей:
+### 2. Создайте виртуальное окружение venv для изоляции зависимостей
+```bash
+python -m venv .venv
 ```
-pip install django==3.2.*
-pip install psycopg2-binary==2.9.*
-pip install environs==14.1.1
+Активация виртуального окружения:
+- На Windows:
+```bash
+.venv\Scripts\activate
+```
+- На MacOS и Linux:
+```bash
+source .venv/bin/activate
+```
+Выполните команду:
+```bash
+pip install -r requirements.txt
+```
+### 3. Это приложение использует файл `.env` для хранения конфиденциальных и конфигурируемых параметров настройки.
+ 
+В корневом каталоге проекта **создайте файл «secret_set.env»**, каждая переменная среды указывается с новой строки в формате `КЛЮЧ=значение`.  Пример:
+```
+DB_ENGINE=***
+DB_HOST=***
+DB_PORT=***
+DB_NAME=***
+DB_USER=***
+DB_PASSWORD=***
+DEBUG=True
+SECRET_KEY=ваш_секретный_ключ
+ALLOWED_HOSTS=localhost,127.0.0.1
+```
+- **Храните `.env` в безопасности**: Убедитесь, что файл `.env` не попадает в систему контроля версий, как например Git, добавив его в `.gitignore`.
+
+## Использование
+
+Для запуска проекта используйте команду:
+```bash
+python manage.py runserver 0.0.0.0:8000
 ```
 
+## Как проверить работоспособность
+### Логи и ошибки
+следите за выводом в терминале, где вы запустили сервер. Убедитесь, что там нет ошибок или предупреждений,
+ которые могли бы указывать на проблемы с подключением или конфигурацией.
+### Дополнительные страницы
+Попробуйте перейти на другие страницы приложения, используя панель навигации или прямые ссылки. 
+Проверьте, что весь функционал работает, как описано в документации (например, доступ к информации о визитах,
+ карточкам и т.д.).
 ## Цель проекта
 
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
@@ -36,13 +77,54 @@ of our bank employees.
 
 
 ### 1. Python3 should already be installed. 
-### 2. Then use pip (or pip3, if there is a conflict with Python2) to install dependencies:
+### 2. Create a virtual environment venv to isolate dependencies
+```bash
+python -m venv .venv
 ```
-pip install django==3.2.*
-pip install psycopg2-binary==2.9.*
-pip install environs==14.1.1
+Activating the virtual environment:
+- On Windows:
+```bash
+.venv\Scripts\activate
+```
+- On MacOS and Linux:
+```bash
+source .venv/bin/activate
+```
+Run the command:
+```bash
+pip install -r requirements.txt
+```
+### 3. This application uses a `.env` file to store sensitive and configurable settings.
+ 
+In the root directory of the project **create a file "secret_set.env"**, each environment variable is specified on a new line in the format `KEY=value`. Example:
+```
+DB_ENGINE=***
+DB_HOST=***
+DB_PORT=***
+DB_NAME=***
+DB_USER=***
+DB_PASSWORD=***
+DEBUG=True
+SECRET_KEY=your_secret_key
+ALLOWED_HOSTS=localhost,127.0.0.1
+```
+- **Keep `.env` safe**: Make sure that the `.env` file is not checked into a version control system like Git by adding it to `.gitignore`.
+
+## Usage
+
+To run the project, use the command:
+```bash
+python manage.py runserver 0.0.0.0:8000
 ```
 
+## How to check if it works
+### Logs and errors
+Monitor the output in the terminal where you started the server. Make sure there are no errors or warnings
+that could indicate connection or configuration issues.
+### Additional pages
+Try to navigate to other pages of the application using the navigation bar or direct links.
+Check that all functionality works as described in the documentation (e.g. access to visit information,
+cards, etc.).
 ## Project Goals
 
 The code is written for educational purposes on online-course for web-developers [dvmn.org](https://dvmn.org/).
