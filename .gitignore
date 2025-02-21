@@ -1,2 +1,3 @@
 secret_set.env
 __pycache__/
+.venv/
