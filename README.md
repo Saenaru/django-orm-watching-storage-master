@@ -62,6 +62,10 @@
 ```bash
 python manage.py runserver 0.0.0.0:8000
 ```
+Введите в браузере:
+```bash
+http://127.0.0.1:8000/
+```
 
 ### Как проверить работоспособность
 
@@ -133,6 +137,10 @@ To run the project, use the command:
 
 ```bash
 python manage.py runserver 0.0.0.0:8000
+```
+Enter in your browser:
+```bash
+http://127.0.0.1:8000/
 ```
 
 ### How to check if it works
